@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const { auth } = require('./src/middlewares/authMiddleware');
 
 async function start() {
+    const PORT = process.env.PORT || 3030
     try {
         const db = await mongoose.connect(mongoDbUrl);
         console.log('DB is Ready!');
@@ -27,7 +28,7 @@ async function start() {
     app.use('/users',authController);
 
 
-    app.listen(3030, () => console.log('Server is listening on port 3030!'));
+    app.listen(PORT, () => console.log(`Server is listening on port ${PORT}!`));
 }
 
 start();
