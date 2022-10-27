@@ -111,6 +111,7 @@ router.post('/details/:id/share', isAuth, async (req, res) => {
 
     try {
         const share = await publicationServices.addShare(publicationId, userId);
+        await userService.addShare(userId, publicationId);
         res.status(201).json(share);
     } catch (error) {
         console.error(error);

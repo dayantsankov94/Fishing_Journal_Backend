@@ -8,6 +8,12 @@ exports.addPublication = async(userId, publicationId) => {
     const updated = await User.updateOne({ _id: userId }, { $push: { publications: publicationId } })
 };
 
+exports.addShare = async(userId, publicationId) => {
+    publicationId = String(publicationId)
+    
+    const updated = await User.updateOne({ _id: userId }, { $push: { shares: publicationId } })
+};
+
 
 exports.removePublication = async ( userId,publicationId) => {
     const publication = await User.findByIdAndUpdate(userId, { $pull: { publications: publicationId } });
