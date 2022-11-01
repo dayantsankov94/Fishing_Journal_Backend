@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userService = require('../services/userService');
+const { isAuth } = require('../middlewares/guards');
 
 router.post('/add',
     isAuth,
