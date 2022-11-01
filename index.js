@@ -4,6 +4,7 @@ const { mongoDbUrl } = require('./src/constants/urls');
 const cors = require('./src/middlewares/cors');
 const publicationController = require('./src/controllers/publicationController');
 const authController = require('./src/controllers/authController');
+const userController = require('./src/controllers/userController');
 const cookieParser = require('cookie-parser');
 const { auth } = require('./src/middlewares/authMiddleware');
 
@@ -26,6 +27,7 @@ async function start() {
     app.use(auth)
     app.use('/publications',publicationController);
     app.use('/users',authController);
+    app.use('/following',userController);
 
 
     app.listen(PORT, () => console.log(`Server is listening on port ${PORT}!`));

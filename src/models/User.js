@@ -32,6 +32,10 @@ const userSchema = new Schema({
         type: Types.ObjectId,
         ref: 'Publication',
     }],
+    following: [{
+        type: Types.ObjectId,
+        ref: 'User',
+    }],
 });
 
 userSchema.index({ email: 1 }, {
