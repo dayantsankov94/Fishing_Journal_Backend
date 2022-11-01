@@ -1,3 +1,4 @@
+const router = require('express').Router();
 const userService = require('../services/userService');
 
 router.post('/add',
@@ -31,3 +32,5 @@ router.delete('/remove',
             res.status(400).json({ message });
         }
     });
+
+module.exports = router;
