@@ -44,6 +44,7 @@ exports.createToken = async (user) => {
         imageUrl: user.imageUrl,
         publications: user.publications,
         shares: user.shares,
+        following: user.following
     }
 
 
