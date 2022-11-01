@@ -2,11 +2,11 @@ const router = require('express').Router();
 const userService = require('../services/userService');
 const { isAuth } = require('../middlewares/guards');
 
-router.post('/add',
+router.post('/add/:id',
     isAuth,
     async (req, res) => {
 
-        const followingId = req.body
+        const followingId = req.params.id
         const userId = req.user._id;
         try {
             const result = await userService.addFollowing(userId, followingId);
@@ -18,11 +18,11 @@ router.post('/add',
         }
     });
 
-router.delete('/remove',
+router.delete('/remove/:id',
     isAuth,
     async (req, res) => {
 
-        const followingId = req.body
+        const followingId = req.params.id
         const userId = req.user._id;
         try {
             const result = await userService.removeFollowing(userId, followingId);
